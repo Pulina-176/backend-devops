@@ -48,4 +48,8 @@ public class TransactionService {
         }
         return null;
     }
+
+    public Transaction getTransactionById(String transactionId) {
+        return transactionRepository.findById(transactionId).orElse(null);
+    }
 }
