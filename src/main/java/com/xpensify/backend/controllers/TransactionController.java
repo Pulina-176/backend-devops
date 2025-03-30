@@ -32,6 +32,17 @@ public class TransactionController {
         return ResponseEntity.ok(transactionService.getAllTransactions(userId));
     }
 
+    @GetMapping("/transaction/{transactionId}")
+    public ResponseEntity<?> getTransactionById(@PathVariable String transactionId){
+        Transaction transaction = transactionService.getTransactionById(transactionId);
+        if (transaction != null){
+            return ResponseEntity.ok(transaction);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Transaction not found");
+        }
+    }
+
+
     @PutMapping("/{transactionId}")
     public ResponseEntity<?> updateTransaction(@PathVariable String transactionId, @RequestBody TransactionDTO dto) {
         Transaction updatedTransaction = transactionService.updateTransaction(transactionId, dto);
