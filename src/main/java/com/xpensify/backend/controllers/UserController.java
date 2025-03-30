@@ -15,7 +15,7 @@ public class UserController {
 
     @GetMapping("/test")
     public String testPage() {
-        return "test passed";
+        return "pipeline successful";
     }
 
     @GetMapping("/get-all-users")
